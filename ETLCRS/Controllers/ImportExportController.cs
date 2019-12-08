@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using System.Threading.Tasks;
 using ETLCRS.Models.ExportableItems;
 using ETLCRS.Services;
 using Microsoft.AspNetCore.Http;
@@ -59,13 +60,14 @@ namespace ETLCRS.Controllers
         /// <returns>Serialisable object of output response</returns>
         [HttpPost]
         [SwaggerOperation(Summary = "Get output transformation of your input file", Description = "Gets input txt file and type of result")]
-        public IActionResult Import([FromForm] IFormFile file, TypeOfResult type = TypeOfResult.Object)
+        public async Task<IActionResult> Import([FromForm] IFormFile file, TypeOfResult type = TypeOfResult.Object)
         {
             CheckFile(file);
 
             try
             {
-                var transform = _transformationService.Transform<Position,List<string>>(file.OpenReadStream());
+                var transform = await (_transformationService.Transform<Position,List<string>>(file.OpenReadStream()))
+                                                                .ConfigureAwait(false);
 
                 switch (type)
                 {

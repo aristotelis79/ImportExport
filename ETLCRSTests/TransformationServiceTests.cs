@@ -49,7 +49,7 @@ namespace ETLCRSTests
             var output = new List<string> {InputHelpers.Outputs[0], InputHelpers.Outputs[1]};
             
             //act
-            var result  = _service.Transform<Position, List<string>>(stream);
+            var result  = _service.Transform<Position, List<string>>(stream).Result;
             
             //assert
             Assert.That(result,Is.EquivalentTo(output));
@@ -63,7 +63,7 @@ namespace ETLCRSTests
             var output = new List<string> {InputHelpers.Outputs[1], InputHelpers.Outputs[2]};
             
             //act
-            var result  = _service.Transform<Position, List<string>>(stream);
+            var result  = _service.Transform<Position, List<string>>(stream).Result;
             
             //assert
             Assert.That(result,Is.EquivalentTo(output));
@@ -81,7 +81,7 @@ namespace ETLCRSTests
             var output = new List<string> {InputHelpers.Outputs[0], InputHelpers.Outputs[1]};
             
             //act
-            var result  = _service.Transform<Position, List<string>>(stream);
+            var result  = _service.Transform<Position, List<string>>(stream).Result;
             
             //assert
             Assert.That(result,Is.EquivalentTo(output));
@@ -97,7 +97,7 @@ namespace ETLCRSTests
             var output = new List<string> {InputHelpers.Outputs[1]};
             
             //act
-            var result  = _service.Transform<Position, List<string>>(stream);
+            var result  = _service.Transform<Position, List<string>>(stream).Result;
 
             //assert
             _loggerMock.VerifyLog(LogLevel.Information, "[\"# area: (latt: 31.99, 37.14) - (lon: -2.95, 9.09) [Algeria - north of 32~N]\"," +
@@ -116,7 +116,7 @@ namespace ETLCRSTests
             var output = new List<string> {InputHelpers.Outputs[1]};
             
             //act
-            var result  = _service.Transform<Position, List<string>>(stream);
+            var result  = _service.Transform<Position, List<string>>(stream).Result;
 
             //assert
             _loggerMock.VerifyLog(LogLevel.Information, "[\"areea:(lat: 31.99, 37.14) - (lon: -2.95, 9.09) [Algeria - north of 32~N]\"]", Times.Once());

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using ETLCRS.Models;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -29,7 +30,7 @@ namespace ETLCRS.Services
         #region Methods
 
         /// <inheritdoc/>
-        public TOut Transform<TIn,TOut>(Stream stream) where TIn : IExportableItem<TOut>, new()
+        public async Task<TOut> Transform<TIn,TOut>(Stream stream) where TIn : IExportableItem<TOut>, new()
         {
             CheckForNull(stream);
 
@@ -41,7 +42,7 @@ namespace ETLCRS.Services
             {
                 while (!reader.EndOfStream)
                 {
-                    var line = reader.ReadLine();
+                    var line = await reader.ReadLineAsync().ConfigureAwait(false);
                     lines.Add(line);
 
                     //continue until rich the end of division

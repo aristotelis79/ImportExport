@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.IO;
+using System.Threading.Tasks;
 using ETLCRS.Models;
 
 namespace ETLCRS.Services
@@ -14,6 +15,6 @@ namespace ETLCRS.Services
         /// <param name="stream">Stream of data</param>
         /// <returns></returns>
         /// 
-        TOut Transform<TIn,TOut>(Stream stream) where TIn : IExportableItem<TOut>, new();
+        Task<TOut> Transform<TIn,TOut>(Stream stream) where TIn : IExportableItem<TOut>, new();
     }
 }
