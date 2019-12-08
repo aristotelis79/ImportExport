@@ -62,7 +62,11 @@ namespace ETLCRS.Controllers
         [SwaggerOperation(Summary = "Get output transformation of your input file", Description = "Gets input txt file and type of result")]
         public async Task<IActionResult> Import([FromForm] IFormFile file, TypeOfResult type = TypeOfResult.Object)
         {
-            CheckFile(file);
+            if (file == null)
+            {
+                _logger.Log(LogLevel.Information, "empty file");
+                return  new ContentResult(){Content = "empty file" ,StatusCode = 422};
+            }
 
             try
             {
@@ -84,20 +88,9 @@ namespace ETLCRS.Controllers
             catch (Exception e)
             {
                 _logger.Log(LogLevel.Error,e,"can't import'");
-                throw;
+
+                return  new ContentResult(){Content = "Something going wrong" ,StatusCode = 500};
             }
-        }
-
-        /// <summary>
-        /// Check for input file for null 
-        /// </summary>
-        /// <param name="file"></param>
-        private void CheckFile(IFormFile file)
-        {
-            if (file != null) return;
-
-            _logger.Log(LogLevel.Information, "empty file");
-            throw new ArgumentNullException(nameof(file));
         }
 
         #endregion
