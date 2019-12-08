@@ -29,11 +29,11 @@ namespace ETLCRSTests
             Assert.That(_position.Identifiable, Is.Not.Null);
             Assert.That(_position.Describable, Is.Not.Null);
             Assert.That(_position.Area, Is.Not.Null);
-            Assert.That(_position.StatusSubType, Is.Not.Null);
+            Assert.That(_position.StatusType, Is.Not.Null);
             Assert.That(Position.TypeOfLines.ContainsValue(_position.Identifiable));
             Assert.That(Position.TypeOfLines.ContainsValue(_position.Describable));
             Assert.That(Position.TypeOfLines.ContainsValue(_position.Area));
-            Assert.That(Position.TypeOfLines.ContainsValue(_position.StatusSubType));
+            Assert.That(Position.TypeOfLines.ContainsValue(_position.StatusType));
             Assert.That(_position.NumberOfSubtypes.Equals(4));
         }
 
@@ -49,7 +49,7 @@ namespace ETLCRSTests
             _position.Area.Lon.Value.Max = 4;
             _position.Describable.Name.Value = "name";
             _position.Describable.Description.Value = "describe";
-            _position.StatusSubType.Status.Value = "status";
+            _position.StatusType.Status.Value = "status";
             //act
             _position.ClearValues();
 
@@ -62,7 +62,7 @@ namespace ETLCRSTests
             Assert.That(_position.Area.Lon.Value.Max, Is.EqualTo(default(decimal)));
             Assert.That(_position.Describable.Name.Value, Is.EqualTo(default(string)));
             Assert.That(_position.Describable.Description.Value, Is.EqualTo(default(string)));
-            Assert.That(_position.StatusSubType.Status.Value, Is.EqualTo(default(string)));
+            Assert.That(_position.StatusType.Status.Value, Is.EqualTo(default(string)));
         }
 
         [Test]
@@ -79,7 +79,7 @@ namespace ETLCRSTests
             _position.Area.Lon.Value.Max = 4;
             _position.Describable.Name.Value = "name";
             _position.Describable.Description.Value = "describe";
-            _position.StatusSubType.Status.Value = "status";
+            _position.StatusType.Status.Value = "status";
             
             //act
             _position.FeedResponseType(_position);

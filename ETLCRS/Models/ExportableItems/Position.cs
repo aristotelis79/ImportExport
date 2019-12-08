@@ -15,7 +15,7 @@ namespace ETLCRS.Models.ExportableItems
 
         public Area Area { get; set; }
 
-        public StatusSubType StatusSubType { get; set; }
+        public StatusType StatusType { get; set; }
 
         public static Dictionary<int, SubType> TypeOfLines { get; set; }
 
@@ -96,7 +96,7 @@ namespace ETLCRS.Models.ExportableItems
             Identifiable.ClearValues();
             Describable.ClearValues();
             Area.ClearValues();
-            StatusSubType.ClearValues();
+            StatusType.ClearValues();
         }
 
 
@@ -107,9 +107,9 @@ namespace ETLCRS.Models.ExportableItems
                                     $@"{Area.Lon.Value.Min.ToString(CultureInfo.CurrentCulture)} {Area.Lon.Value.Max.ToString(CultureInfo.CurrentCulture)} "+
                                     $@"{Identifiable.ProjValue.Value}";
             
-            return string.IsNullOrWhiteSpace(StatusSubType.Status.Value) 
+            return string.IsNullOrWhiteSpace(StatusType.Status.Value) 
                 ? representation : 
-                $"{representation} {StatusSubType.Status.Value}";
+                $"{representation} {StatusType.Status.Value}";
         }
 
 
@@ -121,13 +121,13 @@ namespace ETLCRS.Models.ExportableItems
 
             Area = new Area();
 
-            StatusSubType = new StatusSubType();
+            StatusType = new StatusType();
 
             TypeOfLines = new Dictionary<int, SubType>()
             {
                 {1, Describable},
                 {2, Area},
-                {3, StatusSubType},
+                {3, StatusType},
                 {4, Identifiable}
             };
 

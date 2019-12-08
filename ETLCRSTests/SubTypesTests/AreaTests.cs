@@ -23,7 +23,7 @@ namespace ETLCRSTests.SubTypesTests
         }
 
         [Test]
-        public void Given_Identifiable_When_Init_Identifiable_Item_Are_Init_Successful()
+        public void Given_Area_When_Init_Area_Item_Are_Init_Successful()
         {
             Assert.That(_area.Lat,Is.Not.Null);
             Assert.That(_area.Lon,Is.Not.Null);
@@ -42,7 +42,7 @@ namespace ETLCRSTests.SubTypesTests
 
 
         [Test]
-        public void Given_Identifiable_When_Clear_Identifiable_Values_Clears()
+        public void Given_Area_When_Clear_Area_Values_Clears()
         {
             //arrange
             _area.Lat.Value.Min = 10;
@@ -61,7 +61,7 @@ namespace ETLCRSTests.SubTypesTests
         }
 
         [Test]
-        public void Given_Identifiable_When_Get_If_SubType_Of_Identifiable_Then_Return_True()
+        public void Given_Area_When_Get_If_SubType_Of_Area_Then_Return_True()
         {
             //arrange
             var line = InputHelpers.Area_A;
@@ -73,7 +73,7 @@ namespace ETLCRSTests.SubTypesTests
         }
 
         [Test]
-        public void Given_Identifiable_When_Get_If_Not_SubType_Of_Identifiable_Then_Return_False()
+        public void Given_Area_When_Get_If_Not_SubType_Of_Area_Then_Return_False()
         {
             //arrange
             var line = InputHelpers.Describable_A;
@@ -86,7 +86,7 @@ namespace ETLCRSTests.SubTypesTests
 
 
         [Test]
-        public void Given_Identifiable_When_Feed_Values_From_Line_Then_Feed_Values_And_Not_Error_Return()
+        public void Given_Area_When_Feed_Values_From_Line_Then_Feed_Values_And_Not_Error_Return()
         {
             //arrange
             var line = InputHelpers.Area_B;
@@ -103,7 +103,7 @@ namespace ETLCRSTests.SubTypesTests
 
 
         [Test]
-        public void Given_Identifiable_When_Feed_Values_From_Wrong_Line_Then_Feed_Values_Is_Empty_And_Error_Return()
+        public void Given_Area_When_Feed_Values_From_Wrong_Line_Then_Feed_Values_Is_Empty_And_Error_Return()
         {
             //arrange
             _area.ClearValues();

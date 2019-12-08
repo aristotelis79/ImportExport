@@ -8,7 +8,7 @@ namespace ETLCRS.Models.Subtypes
     /// <summary>
     /// Status Type of Position
     /// </summary>
-    public class StatusSubType: SubType
+    public class StatusType: SubType
     {
         public static List<string> StatusTypes = new List<string>{"DISCONTINUED", "DEPRECATED"};
         ///<inheritdoc/>
