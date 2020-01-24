@@ -1,0 +1,22 @@
+As a part of a workflow we need to parse the contents of the given 'input.txt' file.
+
+The file contains multi-line chuncks of information separated by an empty new line.
+Each chunck has a formatting like
+	# {Name} [{Description}]
+	# area (lat: {MinLat}, {MaxLat}) - (lon: {MinLon}, {MaxLon}) [...]
+	# {DeprecatedOrDiscontinued}
+	<{Identity}> {ProjValue} <>
+Note how the bracket pairs used above mark the text extent of each data field we are interested in.
+
+Implement a class that can be passed a string parameter, i.e. like the input file contents, 
+parse the text and produce the following column output
+	{Identity} {Name} {Description} {MinLat} {MaxLat} {MinLon} {MaxLon} {ProjValue} {DeprecatedOrDiscontinued}
+
+Each chunk should populate a single output row.
+{DeprecatedOrDiscontinued} field will be empty if not present in the input.
+
+Provide a Unit test assembly or any other solution that will facilitate running the implemented source code.
+You can use any nuget package and/or non-proprietary 3rd party library desired, 
+as long as you explain the reasoning behind selecting it.
+
+Your code should be consice, containing comments, and be sufficiently documented in any way you see fit.
